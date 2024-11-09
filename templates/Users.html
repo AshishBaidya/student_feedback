@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Users</title>
+</head>
+<style>table, th, td {border:1px solid black}</style>
+<body>
+    <h1>Users</h1>
+    <table style="width: 100%;">
+        <tr><th>ID</th>
+            <th>Name</th>
+            <th>Registration</th>
+            <th>Email</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.fullname}}</td>
+            <td>{{user.regno}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+
+
+    <form action="fetch-one" method="post">
+        <label for="fetch-one">Fetch One User</label>
+        <input type="text" id="fetch-one" name="id" placeholder="ID" required>
+        <input type="submit" name="action"value="Fetch">
+        <input type="submit" name="action" value="Delete">
+    </form>
+    {% if one_user %}
+        <table style="width: 100%;">
+            <tr><th>ID</th>
+                <th>Name</th>
+                <th>Registration</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>{{one_user.id}}</td>
+                <td>{{one_user.fullname}}</td>
+                <td>{{one_user.regno}}</td>
+                <td>{{one_user.email}}</td>
+            </tr>
+        </table>
+    {% elif one_user is none %}
+        <p>User Not Found</p>
+    {% endif %}
+
+    {% if one_user and action == 'Delete' %}
+    <p>User Deleted Succesfully</p>
+    {% endif %}
+    
+</body>
+</html>
