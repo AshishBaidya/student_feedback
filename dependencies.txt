@@ -1,0 +1,8 @@
+Pip:
+    FastApi(Api)
+    Psycopg2(Databse Connection)
+    SqlAlchemy(ORM and Core)
+    Uvicorn(Local Server Host)
+
+Databse:
+    Postgres Sql
